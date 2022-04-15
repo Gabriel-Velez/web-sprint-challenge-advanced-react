@@ -34,22 +34,3 @@ test("App render proper elements", () => {
   expect(right).toBeInTheDocument();
   expect(reset).toBeInTheDocument();
 });
-
-// render(<AppFunctional />);
-// const header = screen.queryByText(/welcome/i);
-// const coordinates = screen.queryByText(/coordinates/i);
-// const steps = screen.queryByText(/you moved/i);
-// const up = screen.queryByText(/up/i);
-// const down = screen.queryByText(/down/i);
-// const left = screen.queryByText(/left/i);
-// const right = screen.queryByText(/right/i);
-// const reset = screen.queryByText(/reset/i);
-
-// expect(header).toBeInTheDocument();
-// expect(coordinates).toBeInTheDocument();
-// expect(steps).toBeInTheDocument();
-// expect(up).toBeInTheDocument();
-// expect(down).toBeInTheDocument();
-// expect(left).toBeInTheDocument();
-// expect(right).toBeInTheDocument();
-// expect(reset).toBeInTheDocument();
