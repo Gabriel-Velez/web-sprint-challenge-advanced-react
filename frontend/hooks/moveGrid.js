@@ -63,10 +63,29 @@ const moveGrid = (gridWidth, gridHeight, direction) => {
       break;
 
     case "reset":
-      if (Math.round((squareObjects.length - 1) / 2) === isActive) return "";
       newActive = Math.round((squareObjects.length - 1) / 2);
       reset = true;
       break;
+  }
+
+  //logic for reset
+  if (reset === true && Math.round((squareObjects.length - 1) / 2) === isActive) {
+    const resetObj = squareObjects[newActive];
+    resetObj.reset = "true";
+    //returns object with square: square, plotX: countX, plotY: countY:, active: false, reset: true,
+    squares[isActive].classList.remove("active");
+    squares[newActive].innerHTML = squares[isActive].innerHTML;
+    squares[newActive].classList.add("active");
+    return resetObj;
+  }
+  if (reset === true) {
+    const resetObj = squareObjects[newActive];
+    resetObj.reset = "true";
+    squares[isActive].classList.remove("active");
+    squares[newActive].innerHTML = squares[isActive].innerHTML;
+    squares[isActive].innerHTML = "";
+    squares[newActive].classList.add("active");
+    return resetObj;
   }
 
   //moves the square around according to switch data
@@ -74,14 +93,6 @@ const moveGrid = (gridWidth, gridHeight, direction) => {
   squares[newActive].innerHTML = squares[isActive].innerHTML;
   squares[isActive].innerHTML = "";
   squares[newActive].classList.add("active");
-
-  //logic for reset
-  if (reset === true) {
-    const resetObj = squareObjects[newActive];
-    resetObj.reset = "true";
-    //returns object with square: square, plotX: countX, plotY: countY:, active: false, reset: true,
-    return resetObj;
-  }
 
   //returns object with square: square, plotX: countX, plotY: countY:, active: false, reset: false,
   return squareObjects[newActive];

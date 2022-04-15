@@ -19,6 +19,8 @@ export default function AppFunctional(props) {
       setXCoord(res.plotX);
       setYCoord(res.plotY);
       setTotal(0);
+      setFormValues("");
+      document.querySelector("#email").value = "";
       document.querySelector("#message").innerHTML = "";
     }
     //Move
@@ -52,8 +54,9 @@ export default function AppFunctional(props) {
         document.querySelector("#message").innerHTML = res.data.message;
       })
       .catch((err) => {
-        console.error(err);
-        document.querySelector("#message").innerHTML = "Ouch: email must be a valid email";
+        // console.error(err);
+        document.querySelector("#message").innerHTML = err.response.data.message;
+        // console.log(err.response.data.message);
       });
   };
 

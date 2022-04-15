@@ -21,8 +21,10 @@ export default class AppClass extends React.Component {
           xCoord: res.plotX,
           yCoord: res.plotY,
           total: 0,
+          formValues: "",
         });
         document.querySelector("#message").innerHTML = "";
+        document.querySelector("#email").value = "";
       }
       //Move
       else {
@@ -60,8 +62,8 @@ export default class AppClass extends React.Component {
         .post("http://localhost:9000/api/result", submission)
         .then((res) => (document.querySelector("#message").innerHTML = res.data.message))
         .catch((err) => {
-          console.error(err);
-          document.querySelector("#message").innerHTML = "Ouch: email must be a valid email";
+          // console.error(err);
+          document.querySelector("#message").innerHTML = err.response.data.message;
         });
     };
 
