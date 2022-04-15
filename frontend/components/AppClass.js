@@ -52,10 +52,17 @@ export default class AppClass extends React.Component {
         steps: this.state.total,
         email: this.state.formValues,
       };
+      this.setState({
+        formValues: "",
+      });
+      document.querySelector("#email").value = "";
       axios
         .post("http://localhost:9000/api/result", submission)
         .then((res) => (document.querySelector("#message").innerHTML = res.data.message))
-        .catch((err) => console.error(err));
+        .catch((err) => {
+          console.error(err);
+          document.querySelector("#message").innerHTML = "Ouch: email must be a valid email";
+        });
     };
 
     return (
