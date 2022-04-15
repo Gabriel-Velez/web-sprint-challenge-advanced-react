@@ -33,8 +33,7 @@ export default function AppFunctional(props) {
   const [formValues, setFormValues] = useState("");
 
   const onChange = (evt) => {
-    const { value } = evt.target;
-    setFormValues(value);
+    setFormValues(evt.target.value);
   };
 
   const onSubmit = (e) => {
@@ -45,6 +44,8 @@ export default function AppFunctional(props) {
       steps: total,
       email: formValues,
     };
+    setFormValues("");
+    document.querySelector("#email").value = "";
     axios
       .post("http://localhost:9000/api/result", submission)
       .then((res) => (document.querySelector("#message").innerHTML = res.data.message))

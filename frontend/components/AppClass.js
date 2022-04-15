@@ -1,6 +1,6 @@
 import React from "react";
 import moveGrid from "../hooks/moveGrid.js";
-
+import axios from "axios";
 export default class AppClass extends React.Component {
   constructor(props) {
     super(props);
@@ -30,6 +30,7 @@ export default class AppClass extends React.Component {
           xCoord: res.plotX,
           yCoord: res.plotY,
           total: this.state.total + 1,
+          formValues: "",
         });
         document.querySelector("#message").innerHTML = "";
       }
@@ -37,7 +38,7 @@ export default class AppClass extends React.Component {
     const { className } = this.props;
 
     const onChange = (evt) => {
-      const { value } = evt.target;
+      const value = evt.target.value;
       this.setState({
         formValues: value,
       });
@@ -96,8 +97,8 @@ export default class AppClass extends React.Component {
             reset
           </button>
         </div>
-        <form>
-          <input id='email' type='email' placeholder='type email'></input>
+        <form onSubmit={onSubmit}>
+          <input id='email' type='email' placeholder='type email' onChange={onChange}></input>
           <input id='submit' type='submit'></input>
         </form>
       </div>
