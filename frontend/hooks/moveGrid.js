@@ -63,7 +63,6 @@ const moveGrid = (gridWidth, gridHeight, direction) => {
       break;
 
     case "reset":
-      if (Math.round((squareObjects.length - 1) / 2) === isActive) return "";
       newActive = Math.round((squareObjects.length - 1) / 2);
       reset = true;
       break;
@@ -72,7 +71,8 @@ const moveGrid = (gridWidth, gridHeight, direction) => {
   //moves the square around according to switch data
   squares[isActive].classList.remove("active");
   squares[newActive].innerHTML = squares[isActive].innerHTML;
-  squares[isActive].innerHTML = "";
+  if ((reset = true && Math.round((squareObjects.length - 1) / 2) !== isActive))
+    squares[isActive].innerHTML = "";
   squares[newActive].classList.add("active");
 
   //logic for reset

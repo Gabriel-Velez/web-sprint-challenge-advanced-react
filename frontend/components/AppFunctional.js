@@ -63,7 +63,9 @@ export default function AppFunctional(props) {
         <h3 id='coordinates'>
           Coordinates ({xCoord}, {yCoord})
         </h3>
-        <h3 id='steps'>You moved {total} times</h3>
+        <h3 id='steps'>
+          You moved {total} {total === 1 ? "time" : "times"}
+        </h3>
       </div>
       <div id='grid'>
         <div className='square'></div>

@@ -71,7 +71,9 @@ export default class AppClass extends React.Component {
           <h3 id='coordinates'>
             Coordinates ({this.state.xCoord}, {this.state.yCoord})
           </h3>
-          <h3 id='steps'>You moved {this.state.total} times</h3>
+          <h3 id='steps'>
+            You moved {this.state.total} {this.state.total === 1 ? "time" : "times"}
+          </h3>
         </div>
         <div id='grid'>
           <div className='square'></div>
