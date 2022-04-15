@@ -72,12 +72,12 @@ const moveGrid = (gridWidth, gridHeight, direction) => {
   if (reset === true && Math.round((squareObjects.length - 1) / 2) === isActive) {
     const resetObj = squareObjects[newActive];
     resetObj.reset = "true";
-    //returns object with square: square, plotX: countX, plotY: countY:, active: false, reset: true,
     squares[isActive].classList.remove("active");
     squares[newActive].innerHTML = squares[isActive].innerHTML;
     squares[newActive].classList.add("active");
     return resetObj;
   }
+
   if (reset === true) {
     const resetObj = squareObjects[newActive];
     resetObj.reset = "true";
